@@ -9,11 +9,15 @@ const state = {
   boardSort: "slot",
   focusedTeam: "ALL",
   gradeTeam: null,
+  betType: "ALL",
+  betStatus: "ALL",
+  betParticipant: "ALL",
 };
 
 let draftData;
 let playerData;
 let keeperData;
+let sideBetData;
 let report;
 
 const escapeHtml = (value = "") => String(value)
@@ -133,6 +137,21 @@ function renderGrades() {
     future: "Future keeper value",
   };
 
+  const componentOrder = Object.entries(selected.components).sort((a, b) => b[1] - a[1]);
+  const strongestComponents = componentOrder.slice(0, 2).map(([key]) => categoryLabels[key].toLowerCase());
+  const weakestComponent = componentOrder.at(-1);
+  const anchors = selected.roster.slice().sort((a, b) => b.playerGrade - a.playerGrade).slice(0, 3);
+  const bestValue = selected.roster
+    .filter((entry) => !["K", "DST"].includes(entry.player.pos))
+    .slice()
+    .sort((a, b) => b.acquisition - a.acquisition)[0];
+  const keeperCore = selected.roster.filter((entry) => entry.keeper);
+  const rosterAverage = selected.roster.reduce((sum, entry) => sum + entry.playerGrade, 0) / selected.roster.length;
+  const keeperAverage = keeperCore.length ? keeperCore.reduce((sum, entry) => sum + entry.playerGrade, 0) / keeperCore.length : rosterAverage;
+  const keeperComparison = keeperAverage > rosterAverage + 2 ? "outperformed" : keeperAverage < rosterAverage - 2 ? "trailed" : "roughly matched";
+  const rankTier = selected.rank <= 3 ? "the league’s top draft tier" : selected.rank <= 6 ? "the upper half of the league" : selected.rank <= 9 ? "the middle tier of the league" : "the bottom quarter of the draft grades";
+  const draftBlurb = `<p><strong>${escapeHtml(selected.team)}</strong> finished <b>#${selected.rank} of 12</b> with a <b>${oneDecimal(selected.grade)} (${selected.letter})</b>, placing this roster in ${rankTier}. ${anchors.map((entry) => escapeHtml(entry.player.boardName || entry.player.name)).join(", ")} produced its three strongest individual portfolio grades. The build scored best in ${escapeHtml(strongestComponents[0])} and ${escapeHtml(strongestComponents[1])}; ${escapeHtml(categoryLabels[weakestComponent[0]].toLowerCase())} was the clearest drag at ${oneDecimal(weakestComponent[1])}. ${bestValue ? `<strong>${escapeHtml(bestValue.player.boardName || bestValue.player.name)}</strong> was the strongest modeled price result at Round ${bestValue.round} versus a blended market rank of ${oneDecimal(bestValue.marketRank)}.` : ""}</p>${keeperCore.length ? `<p>The keeper core of ${keeperCore.map((entry) => escapeHtml(entry.player.boardName || entry.player.name)).join(", ")} ${keeperComparison} the roster’s average player grade when evaluated at the actual locked round costs.</p>` : ""}`;
+
   const leaderboard = report.teams.map((team) => `<tr data-grade-team="${escapeHtml(team.team)}" class="${team.team === selected.team ? "selected" : ""}">
     <td class="rank-cell">${team.rank}</td>
     <td><strong>${escapeHtml(team.team)}</strong><small>${escapeHtml(team.manager)} · slot ${team.slot}</small></td>
@@ -176,6 +195,7 @@ function renderGrades() {
         <div class="team-grade-total"><b>${oneDecimal(selected.grade)}</b><span>${selected.letter}</span><small>60% absolute · 40% league-relative</small></div>
         <label><span>VIEW TEAM</span><select id="gradeTeamSelect">${report.teams.map((team) => `<option value="${escapeHtml(team.team)}" ${team.team === selected.team ? "selected" : ""}>#${team.rank} ${escapeHtml(team.team)} — ${oneDecimal(team.grade)}</option>`).join("")}</select></label>
       </header>
+      <section class="draft-blurb"><span>DRAFT RECAP</span>${draftBlurb}</section>
       <div class="component-grid">${categoryCards}</div>
       <div class="grade-audit-strip"><span><b>${oneDecimal(selected.baseScore)}</b> raw rubric</span><span><b>${oneDecimal(selected.absoluteQualityScore)}</b> calibrated absolute</span><span><b>${oneDecimal(selected.leagueRelativeScore)}</b> league-relative</span><span><b>${selected.constructionContribution.toFixed(2)}</b> team-only construction points</span></div>
       <div class="player-grade-heading"><div><p>PLAYER-BY-PLAYER AUDIT</p><h4>Every score behind ${escapeHtml(selected.team)}’s grade</h4></div><span>Player contributions plus ${selected.constructionContribution.toFixed(2)} construction points equal the raw rubric score.</span></div>
@@ -240,10 +260,65 @@ function renderSoon() {
   `;
 }
 
+function renderSideBets() {
+  const allBets = sideBetData.bets;
+  const participants = [...new Set(allBets.flatMap((bet) => [bet.participantA, bet.participantB]))].sort((a, b) => a.localeCompare(b));
+  const visibleBets = allBets.filter((bet) => {
+    const typeMatch = state.betType === "ALL" || bet.type === state.betType;
+    const statusMatch = state.betStatus === "ALL" || (state.betStatus === "RESOLVED" ? bet.resolved : !bet.resolved);
+    const participantMatch = state.betParticipant === "ALL" || bet.participantA === state.betParticipant || bet.participantB === state.betParticipant;
+    return typeMatch && statusMatch && participantMatch;
+  });
+  const cashAtStake = allBets.filter((bet) => bet.stakeKind === "cash").reduce((sum, bet) => sum + Number(bet.stakeAmount || 0), 0);
+  const equityAtStake = allBets.filter((bet) => bet.stakeKind === "equity").reduce((sum, bet) => sum + Number(bet.stakeAmount || 0), 0);
+  const seasonCount = allBets.filter((bet) => bet.type === "season").length;
+  const matchupCount = allBets.filter((bet) => bet.type === "matchup").length;
+
+  const cards = visibleBets.map((bet) => {
+    const typeLabel = bet.type === "season" ? "SEASON" : `WK ${bet.week}`;
+    return `<article class="bet-card ${bet.resolved ? "resolved" : ""}">
+      <div class="bet-card-top">
+        <span class="bet-type ${bet.type}">${escapeHtml(typeLabel)}</span>
+        <span class="bet-status">${bet.resolved ? "RESOLVED" : escapeHtml(bet.status.toUpperCase())}</span>
+        <strong>${escapeHtml(bet.stakeDisplay)}</strong>
+      </div>
+      <h3>${escapeHtml(bet.participantA)} <span>vs</span> ${escapeHtml(bet.participantB)}</h3>
+      ${bet.tiebreaker ? `<p><b>Tiebreaker:</b> ${escapeHtml(bet.tiebreaker)}</p>` : `<p class="bet-context">Head-to-head matchup · Week ${bet.week}</p>`}
+      ${bet.note ? `<blockquote>“${escapeHtml(bet.note)}”</blockquote>` : ""}
+      <footer><span>${bet.resolved ? "Final result recorded" : "Active for 2026"}</span><small>${escapeHtml(bet.id)}</small></footer>
+    </article>`;
+  }).join("");
+
+  app.innerHTML = `
+    ${sectionIntro("LEAGUE BULLETIN", "Season-long stakes and weekly matchup action", "A repository-backed ledger of accepted NYFL side bets. Use the filters to isolate a bet type, status, or participant.")}
+    <section class="bet-summary">
+      <article><span>ACCEPTED BETS</span><b>${allBets.length}</b></article>
+      <article><span>CASH AT STAKE</span><b>$${cashAtStake.toLocaleString()}</b></article>
+      <article><span>EQUITY AT STAKE</span><b>${equityAtStake} CRCL</b><small>shares settled at season end</small></article>
+      <article><span>BET MIX</span><b>${seasonCount} / ${matchupCount}</b><small>season / weekly</small></article>
+    </section>
+    <section class="bet-controls" aria-label="Side bet filters">
+      <label><span>BET TYPE</span><select id="betTypeFilter"><option value="ALL">All types</option><option value="season" ${state.betType === "season" ? "selected" : ""}>Season-long</option><option value="matchup" ${state.betType === "matchup" ? "selected" : ""}>Weekly matchup</option></select></label>
+      <label><span>STATUS</span><select id="betStatusFilter"><option value="ALL">Active & resolved</option><option value="ACTIVE" ${state.betStatus === "ACTIVE" ? "selected" : ""}>Active</option><option value="RESOLVED" ${state.betStatus === "RESOLVED" ? "selected" : ""}>Resolved</option></select></label>
+      <label><span>PARTICIPANT</span><select id="betParticipantFilter"><option value="ALL">All participants</option>${participants.map((name) => `<option value="${escapeHtml(name)}" ${state.betParticipant === name ? "selected" : ""}>${escapeHtml(name)}</option>`).join("")}</select></label>
+      <button type="button" id="resetBetFilters">Reset filters</button>
+    </section>
+    <section class="bet-results-meta"><b>${visibleBets.length}</b><span>of ${allBets.length} bets shown</span></section>
+    <section class="bet-grid">${cards || `<div class="empty-bets"><h3>No bets match these filters.</h3><p>Reset the filters to return to the full ledger.</p></div>`}</section>
+    <section class="bet-ledger-note"><b>Ledger source</b><span>${escapeHtml(sideBetData.source)} · updated ${escapeHtml(sideBetData.asOf)}</span><p>Resolved winners and settlement details can be added to <code>data/side-bets.json</code> without changing the page layout.</p></section>
+  `;
+
+  document.querySelector("#betTypeFilter")?.addEventListener("change", (event) => { state.betType = event.target.value; renderSideBets(); });
+  document.querySelector("#betStatusFilter")?.addEventListener("change", (event) => { state.betStatus = event.target.value; renderSideBets(); });
+  document.querySelector("#betParticipantFilter")?.addEventListener("change", (event) => { state.betParticipant = event.target.value; renderSideBets(); });
+  document.querySelector("#resetBetFilters")?.addEventListener("click", () => { state.betType = "ALL"; state.betStatus = "ALL"; state.betParticipant = "ALL"; renderSideBets(); });
+}
+
 function render() {
   tabs.forEach((button) => button.classList.toggle("active", button.dataset.tab === state.tab));
   if (state.tab === "results") renderResults();
   else if (state.tab === "grades") renderGrades();
+  else if (state.tab === "side-bets") renderSideBets();
   else if (state.tab === "methodology") renderMethodology();
   else renderSoon();
   window.scrollTo({ top: 0, behavior: "auto" });
@@ -253,10 +328,11 @@ tabs.forEach((button) => button.addEventListener("click", () => { state.tab = bu
 
 async function init() {
   try {
-    [draftData, playerData, keeperData] = await Promise.all([
+    [draftData, playerData, keeperData, sideBetData] = await Promise.all([
       fetch("./data/draft-results.json").then((response) => response.json()),
       fetch("./data/player-metrics.json").then((response) => response.json()),
       fetch("./data/confirmed-keepers.json").then((response) => response.json()),
+      fetch("./data/side-bets.json").then((response) => response.json()),
     ]);
     report = gradeDraft(draftData, playerData, keeperData);
     dataStamp.textContent = `Model snapshot ${new Date(playerData.generatedAt).toLocaleString([], { dateStyle: "medium", timeStyle: "short" })}`;

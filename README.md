@@ -6,6 +6,7 @@ A standalone, dependency-free results site for the 2026 New York Fantasy League 
 
 - **Draft Results** — the final 12-team, 16-round physical board; sort columns by draft order or team name and focus on one roster.
 - **Draft Grade** — the complete 1–12 leaderboard plus a player-by-player scoring audit for every team.
+- **Side Bets** — the accepted season-long and weekly matchup ledger, with type, status, and participant filters.
 - **Methodology** — the grading weights, formulas, data inputs, and limitations.
 - **Coming Soon!** — reserved for in-season actual-versus-projected tracking.
 
@@ -28,4 +29,5 @@ Then open `http://localhost:4173`.
 - `data/draft-results.json` — final 192 picks in round-by-team form.
 - `data/confirmed-keepers.json` — final 36 locked keepers and their round costs.
 - `data/player-metrics.json` — compact 192-player NYFL model snapshot used by the grade engine.
+- `data/side-bets.json` — repository-backed season and matchup side-bet ledger.
 - `model.js` — the auditable grading calculations.
