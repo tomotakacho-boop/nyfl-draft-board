@@ -149,10 +149,10 @@ function renderGrades() {
 
   const playerRows = selected.roster.slice().sort((a, b) => a.round - b.round).map((entry) => {
     const player = entry.player;
-    const flags = [entry.keeper ? "KEEPER" : "", player.leagueWinner ? "LEAGUE WINNER" : "", player.potentialDiamondScore ? "DIAMOND" : ""].filter(Boolean);
+    const keeperLabel = entry.keeper ? "<em>KEEPER</em>" : "";
     return `<tr>
       <td>R${entry.round}<small>#${entry.overall}</small></td>
-      <td class="player-name-cell"><strong>${escapeHtml(player.boardName || player.name)}</strong><span>${escapeHtml(player.team || "FA")} · ${escapeHtml(player.posRank || player.pos)}</span>${flags.length ? `<em>${flags.join(" · ")}</em>` : ""}</td>
+      <td class="player-name-cell"><strong>${escapeHtml(player.boardName || player.name)}</strong><span>${escapeHtml(player.team || "FA")} · ${escapeHtml(player.posRank || player.pos)}</span>${keeperLabel}</td>
       <td>${positionTag(player.pos)}</td><td>${escapeHtml(entry.role)}</td>
       <td>${player.projectedPPG == null ? "—" : oneDecimal(player.projectedPPG)}</td><td>${oneDecimal(entry.marketRank)}</td>
       <td>${oneDecimal(entry.immediate)}</td><td>${oneDecimal(entry.acquisition)}</td><td>${oneDecimal(entry.upside)}</td>
@@ -193,7 +193,7 @@ function renderMethodology() {
     capital: ["Draft-capital efficiency", "Actual snake pick versus the blended market rank (model rank plus ADP). Keeper players are evaluated at their real locked round cost."],
     depth: ["Depth & resilience", "The five strongest non-starting skill players, blending immediate production and acquisition value."],
     construction: ["Roster construction", "Required starters, RB/WR volume, and penalties for inefficient excess at QB, TE, K, or D/ST."],
-    upside: ["Championship upside", "Top-eight ceiling scores using position projection, overall talent, dynasty context, rookies, league-winner tags, and potential-diamond research."],
+    upside: ["Championship upside", "Top-eight ceiling scores using position projection, overall talent, dynasty context, rookie status, and expert upside research."],
     durability: ["Risk management", "One hundred minus the current injury-prone score, averaged across all 16 rostered players."],
     scarcity: ["Positional scarcity", "Starter quality within each position, with modest premiums for difference-making quarterback and tight-end production."],
     future: ["Future keeper value", "Top-five long-range assets using dynasty rank, upside, round leverage, and the NYFL keeper-cost structure."],
