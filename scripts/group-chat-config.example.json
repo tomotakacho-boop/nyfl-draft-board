@@ -1,0 +1,20 @@
+{
+  "chat": {
+    "displayNameContains": "REPLACE WITH GROUP CHAT NAME",
+    "participantContains": []
+  },
+  "messagesDatabase": "~/Library/Messages/chat.db",
+  "privateArchive": "~/Documents/NYFL Group Chat Archive",
+  "minimumHaha": 6,
+  "lookbackDays": 730,
+  "senderAliases": {
+    "REPLACE_PHONE_OR_EMAIL": "Display name"
+  },
+  "redactUnknownSenders": true,
+  "imageBucketOverrides": {},
+  "publish": {
+    "maxImagePixels": 1600,
+    "jpegQuality": 76,
+    "maxPublishedImagesPerBucket": 500
+  }
+}

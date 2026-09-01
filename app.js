@@ -12,12 +12,15 @@ const state = {
   betType: "ALL",
   betStatus: "ALL",
   betParticipant: "ALL",
+  groupChatView: "ALL",
+  groupChatSearch: "",
 };
 
 let draftData;
 let playerData;
 let keeperData;
 let sideBetData;
+let groupChatData;
 let report;
 
 const escapeHtml = (value = "") => String(value)
@@ -336,11 +339,70 @@ function renderSideBets() {
   document.querySelector("#resetBetFilters")?.addEventListener("click", () => { state.betType = "ALL"; state.betStatus = "ALL"; state.betParticipant = "ALL"; renderSideBets(); });
 }
 
+function groupChatImageCard(item) {
+  const bucketLabel = item.bucket === "memes" ? "MEME" : "OTHER IMAGE";
+  const confidence = item.classificationConfidence == null ? "" : `${Math.round(item.classificationConfidence * 100)}% auto confidence`;
+  return `<article class="chat-image-card">
+    <a href="${escapeHtml(item.src)}" target="_blank" rel="noreferrer"><img src="${escapeHtml(item.src)}" alt="${escapeHtml(item.caption || `${bucketLabel} shared by ${item.sender || "group member"}`)}" loading="lazy"></a>
+    <div class="chat-card-meta"><span class="chat-bucket ${item.bucket}">${bucketLabel}</span>${item.hahaCount >= 6 ? `<b>HAHA × ${item.hahaCount}</b>` : ""}</div>
+    <h3>${escapeHtml(item.caption || "Image shared without a caption")}</h3>
+    <p>${escapeHtml(item.sender || "Unknown sender")} · ${escapeHtml(item.timestampDisplay || item.timestamp || "Unknown time")}</p>
+    ${confidence ? `<small>${escapeHtml(confidence)}</small>` : ""}
+  </article>`;
+}
+
+function renderGroupChat() {
+  const data = groupChatData || { memes: [], otherImages: [], xLinks: [], popularMessages: [] };
+  const memes = data.memes || [];
+  const otherImages = data.otherImages || [];
+  const links = data.xLinks || [];
+  const popular = data.popularMessages || [];
+  const normalizedSearch = normalize(state.groupChatSearch);
+  const matchesSearch = (...values) => !normalizedSearch || values.some((value) => normalize(value).includes(normalizedSearch));
+  const filteredMemes = memes.filter((item) => matchesSearch(item.caption, item.sender, item.timestampDisplay));
+  const filteredOther = otherImages.filter((item) => matchesSearch(item.caption, item.sender, item.timestampDisplay));
+  const filteredLinks = links.filter((item) => matchesSearch(item.url, item.message, item.sender, item.timestampDisplay));
+  const filteredPopular = popular.filter((item) => matchesSearch(item.text, item.sender, item.timestampDisplay));
+  const show = (view) => state.groupChatView === "ALL" || state.groupChatView === view;
+  const configured = Boolean(data.generatedAt);
+
+  app.innerHTML = `
+    ${sectionIntro("GROUP CHAT ARCHIVE", "The weekly greatest hits, without the scrollback", "Images are separated into memes and other photos; X links and messages earning at least six active Haha Tapbacks are indexed with sender and time.")}
+    <section class="chat-privacy-note"><b>PRIVATE CONTENT CHECK</b><span>This tab is deployed with the website. Only publish material the group has agreed may appear here, and keep the repository/site private if the conversation is private.</span></section>
+    <section class="chat-summary">
+      <article><span>MEMES</span><b>${memes.length}</b><small>web copies</small></article>
+      <article><span>OTHER IMAGES</span><b>${otherImages.length}</b><small>web copies</small></article>
+      <article><span>X LINKS</span><b>${links.length}</b><small>deduplicated</small></article>
+      <article><span>6+ HAHA</span><b>${popular.length}</b><small>active Tapbacks</small></article>
+      <article><span>LAST SCAN</span><b class="chat-date">${configured ? escapeHtml(data.generatedAtDisplay || new Date(data.generatedAt).toLocaleString()) : "NOT RUN"}</b><small>${escapeHtml(data.chat?.displayName || "chat not configured")}</small></article>
+    </section>
+    <section class="chat-controls" aria-label="Group chat archive filters">
+      <div>${[
+        ["ALL", "Everything"], ["MEMES", "Memes"], ["OTHER", "Other images"], ["LINKS", "X links"], ["POPULAR", "6+ Haha"],
+      ].map(([value, label]) => `<button type="button" data-chat-view="${value}" class="${state.groupChatView === value ? "active" : ""}">${label}</button>`).join("")}</div>
+      <label><span>SEARCH ARCHIVE</span><input id="groupChatSearch" type="search" value="${escapeHtml(state.groupChatSearch)}" placeholder="Sender, caption, message, or link…"></label>
+    </section>
+    ${!configured ? `<section class="chat-setup-state">
+      <span>WEEKLY PIPELINE READY</span><h3>No group-chat export has been published yet.</h3>
+      <p>Configure the target chat locally, grant Full Disk Access, run the extractor once, review the two image buckets, and then publish the generated web index.</p>
+      <ol><li>Copy <code>scripts/group-chat-config.example.json</code> to <code>.group-chat-config.json</code>.</li><li>Add the exact chat name or participant identifiers.</li><li>Run <code>python3 scripts/imessage_group_chat_export.py --config .group-chat-config.json</code>.</li><li>Review the local archive, then commit only the generated website files you intend to share.</li></ol>
+    </section>` : ""}
+    ${show("MEMES") ? `<section class="chat-section"><header><div><p>IMAGE BUCKET 01</p><h3>Memes</h3></div><span>${filteredMemes.length} shown</span></header><div class="chat-image-grid">${filteredMemes.map(groupChatImageCard).join("") || `<p class="chat-empty">No memes match this view.</p>`}</div></section>` : ""}
+    ${show("OTHER") ? `<section class="chat-section"><header><div><p>IMAGE BUCKET 02</p><h3>Other images</h3></div><span>${filteredOther.length} shown</span></header><div class="chat-image-grid">${filteredOther.map(groupChatImageCard).join("") || `<p class="chat-empty">No other images match this view.</p>`}</div></section>` : ""}
+    ${show("LINKS") ? `<section class="chat-section"><header><div><p>LINK LEDGER</p><h3>X.com links</h3></div><span>${filteredLinks.length} shown</span></header><div class="chat-link-list">${filteredLinks.map((item) => `<article><div><span>${escapeHtml(item.sender || "Unknown sender")}</span><small>${escapeHtml(item.timestampDisplay || item.timestamp || "Unknown time")}</small></div><p>${escapeHtml(item.message || "Link shared without accompanying text")}</p><a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">Open on X ↗</a></article>`).join("") || `<p class="chat-empty">No X links match this view.</p>`}</div></section>` : ""}
+    ${show("POPULAR") ? `<section class="chat-section"><header><div><p>GROUP-APPROVED</p><h3>Messages with 6+ Haha Tapbacks</h3></div><span>${filteredPopular.length} shown</span></header><div class="chat-popular-list">${filteredPopular.map((item) => `<article><b>${item.hahaCount}<small>HAHA</small></b><div><blockquote>${escapeHtml(item.text || "Attachment-only message")}</blockquote><p>${escapeHtml(item.sender || "Unknown sender")} · ${escapeHtml(item.timestampDisplay || item.timestamp || "Unknown time")}</p>${item.xLinks?.length ? `<div>${item.xLinks.map((url) => `<a href="${escapeHtml(url)}" target="_blank" rel="noreferrer">X link ↗</a>`).join("")}</div>` : ""}</div></article>`).join("") || `<p class="chat-empty">No messages currently have six active Haha Tapbacks.</p>`}</div></section>` : ""}
+  `;
+
+  document.querySelectorAll("[data-chat-view]").forEach((button) => button.addEventListener("click", () => { state.groupChatView = button.dataset.chatView; renderGroupChat(); }));
+  document.querySelector("#groupChatSearch")?.addEventListener("change", (event) => { state.groupChatSearch = event.target.value; renderGroupChat(); });
+}
+
 function render() {
   tabs.forEach((button) => button.classList.toggle("active", button.dataset.tab === state.tab));
   if (state.tab === "results") renderResults();
   else if (state.tab === "grades") renderGrades();
   else if (state.tab === "side-bets") renderSideBets();
+  else if (state.tab === "group-chat") renderGroupChat();
   else if (state.tab === "methodology") renderMethodology();
   else renderSoon();
   window.scrollTo({ top: 0, behavior: "auto" });
@@ -350,11 +412,12 @@ tabs.forEach((button) => button.addEventListener("click", () => { state.tab = bu
 
 async function init() {
   try {
-    [draftData, playerData, keeperData, sideBetData] = await Promise.all([
+    [draftData, playerData, keeperData, sideBetData, groupChatData] = await Promise.all([
       fetch("./data/draft-results.json").then((response) => response.json()),
       fetch("./data/player-metrics.json").then((response) => response.json()),
       fetch("./data/confirmed-keepers.json").then((response) => response.json()),
       fetch("./data/side-bets.json").then((response) => response.json()),
+      fetch("./data/group-chat.json").then((response) => response.json()),
     ]);
     report = gradeDraft(draftData, playerData, keeperData);
     dataStamp.textContent = `Model snapshot ${new Date(playerData.generatedAt).toLocaleString([], { dateStyle: "medium", timeStyle: "short" })}`;

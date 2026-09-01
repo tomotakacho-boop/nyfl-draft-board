@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": null,
+  "generatedAtDisplay": null,
+  "chat": {
+    "displayName": "Not configured",
+    "identifierHash": null
+  },
+  "counts": {
+    "memes": 0,
+    "otherImages": 0,
+    "xLinks": 0,
+    "popularMessages": 0
+  },
+  "memes": [],
+  "otherImages": [],
+  "xLinks": [],
+  "popularMessages": []
+}
