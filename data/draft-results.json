@@ -1,0 +1,141 @@
+{
+  "season": 2026,
+  "league": "New York Fantasy League",
+  "asOf": "2026-08-31",
+  "source": "Final physical NYFL draft board supplied and confirmed by the league manager",
+  "rounds": 16,
+  "teams": [
+    {
+      "slot": 1,
+      "team": "Matt's Monstrous Team",
+      "manager": "Matt Taffet",
+      "picks": [
+        "Christian McCaffrey", "Omarion Hampton", "Garrett Wilson", "Jaylen Warren",
+        "Harold Fannin Jr.", "Drake London", "Justin Herbert", "Jordan Addison",
+        "Kyle Monangai", "Jonah Coleman", "Luther Burden III", "Los Angeles Rams",
+        "Emmett Johnson", "Evan McPherson", "Ollie Gordon II", "Fernando Mendoza"
+      ]
+    },
+    {
+      "slot": 2,
+      "team": "U Dont Call Them Pollard People",
+      "manager": "Josh Watts",
+      "picks": [
+        "Amon-Ra St. Brown", "Kenneth Walker III", "Bhayshul Tuten", "George Pickens",
+        "Emeka Egbuka", "Dak Prescott", "J.K. Dobbins", "Josh Downs",
+        "Dallas Goedert", "Tyler Allgeier", "Juwan Johnson", "Jordan Love",
+        "Dylan Sampson", "Tyler Loop", "Minnesota Vikings", "Zachariah Branch"
+      ]
+    },
+    {
+      "slot": 3,
+      "team": "Chase Brown is God",
+      "manager": "Jack Harrist",
+      "picks": [
+        "Justin Jefferson", "Bucky Irving", "Tetairoa McMillan", "Jalen Hurts",
+        "Chuba Hubbard", "Michael Wilson", "Jordan Mason", "Jameson Williams",
+        "De'Zhaun Stribling", "Jakobi Meyers", "Houston Texans", "Kyler Murray",
+        "Sam LaPorta", "Chris Boswell", "T.J. Hockenson", "Chase Brown"
+      ]
+    },
+    {
+      "slot": 4,
+      "team": "Maye son or Conk daughter?",
+      "manager": "Leo Danzig",
+      "picks": [
+        "CeeDee Lamb", "D'Andre Swift", "Davante Adams", "RJ Harvey",
+        "Kyle Pitts Sr.", "DK Metcalf", "Ladd McConkey", "Jaxson Dart",
+        "Dalton Kincaid", "Kaelon Black", "Rashid Shaheed", "Caleb Williams",
+        "Brandon Aubrey", "Jacksonville Jaguars", "Alvin Kamara", "Kyren Williams"
+      ]
+    },
+    {
+      "slot": 5,
+      "team": "The Twin Bowers",
+      "manager": "Tomotaka Cho",
+      "picks": [
+        "Saquon Barkley", "Tee Higgins", "TreVeyon Henderson", "Carnell Tate",
+        "Jaxon Smith-Njigba", "Jacory Croskey-Merritt", "Chris Rodriguez Jr.", "Brock Bowers",
+        "Patrick Mahomes", "Jalen Coker", "Tank Bigsby", "Chig Okonkwo",
+        "Seattle Seahawks", "Jake Bates", "Jayden Higgins", "Woody Marks"
+      ]
+    },
+    {
+      "slot": 6,
+      "team": "'97-'98 Bulls",
+      "manager": "Tashi Eng",
+      "picks": [
+        "Malik Nabers", "A.J. Brown", "DeVonta Smith", "Josh Jacobs",
+        "Joe Burrow", "Jonathan Taylor", "Matthew Golden", "Travis Kelce",
+        "Kenneth Gainwell", "Zach Charbonnet", "Tyjae Spears", "Jake Ferguson",
+        "Kaytron Allen", "Jerry Jeudy", "Kansas City Chiefs", "Will Reichard"
+      ]
+    },
+    {
+      "slot": 7,
+      "team": "2015-2016 Cleveland Cavs ⚔️",
+      "manager": "Randy Lai",
+      "picks": [
+        "Chris Olave", "David Montgomery", "DJ Moore", "Mike Evans",
+        "James Cook III", "Blake Corum", "Trevor Lawrence", "Stefon Diggs",
+        "Colston Loveland", "KC Concepcion", "Keaton Mitchell", "Ja'Kobi Lane",
+        "Jason Myers", "New England Patriots", "Tyler Shough", "Christian Watson"
+      ]
+    },
+    {
+      "slot": 8,
+      "team": "Vecberg",
+      "manager": "David Lustberg",
+      "picks": [
+        "Bijan Robinson", "Lamar Jackson", "Jadarian Price", "Marvin Harrison Jr.",
+        "Courtland Sutton", "Michael Pittman Jr.", "Tyler Warren", "Aaron Jones Sr.",
+        "Makai Lemon", "Brock Purdy", "Travis Hunter", "Matthew Stafford",
+        "Pittsburgh Steelers", "Eddy Piñeiro", "Nicholas Singleton", "Puka Nacua"
+      ]
+    },
+    {
+      "slot": 9,
+      "team": "Burrowmancer",
+      "manager": "Matthew Enslin",
+      "picks": [
+        "Derrick Henry", "Josh Allen", "Rome Odunze", "Tucker Kraft",
+        "Tony Pollard", "Quentin Johnston", "Jayden Reed", "Travis Etienne Jr.",
+        "Mark Andrews", "Rachaad White", "Khalil Shakir", "Denzel Boston",
+        "Cameron Dicker", "Philadelphia Eagles", "Omar Cooper Jr.", "Rashee Rice"
+      ]
+    },
+    {
+      "slot": 10,
+      "team": "Big Boutte Btches",
+      "manager": "Jeremy Sahler",
+      "picks": [
+        "Ja'Marr Chase", "Cam Skattebo", "Rhamondre Stevenson", "Breece Hall",
+        "Alec Pierce", "Rico Dowdle", "Xavier Worthy", "Bo Nix",
+        "Isaiah Likely", "Nico Collins", "Braelon Allen", "Denver Broncos",
+        "Seth McGowan", "Devaughn Vele", "Jaydon Blue", "Harrison Mevis"
+      ]
+    },
+    {
+      "slot": 11,
+      "team": "Loser buys winner's Lemonade",
+      "manager": "Nathaniel Kazlow",
+      "picks": [
+        "Ashton Jeanty", "Jeremiyah Love", "Parker Washington", "Jaylen Waddle",
+        "MarShawn Lloyd", "Jayden Daniels", "Quinshon Judkins", "George Kittle",
+        "Romeo Doubs", "Jordyn Tyson", "Kayshon Boutte", "Cyrus Allen",
+        "Jared Goff", "Cam Little", "Jalen McMillan", "De'Von Achane"
+      ]
+    },
+    {
+      "slot": 12,
+      "team": "Gay McPride",
+      "manager": "Matt Spring",
+      "picks": [
+        "Jahmyr Gibbs", "Javonte Williams", "Terry McLaurin", "Drake Maye",
+        "Jonathon Brooks", "Brian Thomas Jr.", "Chris Godwin Jr.", "Wan'Dale Robinson",
+        "Zay Flowers", "Mike Washington Jr.", "Deebo Samuel", "Isiah Pacheco",
+        "Baltimore Ravens", "Ka'imi Fairbairn", "Trey McBride", "Baker Mayfield"
+      ]
+    }
+  ]
+}

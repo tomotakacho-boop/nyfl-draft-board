@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#123e31" />
+    <meta name="description" content="2026 New York Fantasy League final draft results, grades, and methodology." />
+    <title>NYFL 2026 Draft Results</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand-mark" aria-hidden="true">N</div>
+      <div class="brand-copy">
+        <p>NEW YORK FANTASY LEAGUE</p>
+        <h1>Draft Review <span>’26</span></h1>
+      </div>
+      <div class="header-status">
+        <i aria-hidden="true"></i>
+        <div><strong>Final board locked</strong><small>16 rounds · 12 teams</small></div>
+      </div>
+    </header>
+
+    <nav class="site-tabs" aria-label="NYFL results sections">
+      <button type="button" data-tab="results" class="active">Draft Results</button>
+      <button type="button" data-tab="grades">Draft Grade</button>
+      <button type="button" data-tab="methodology">Methodology</button>
+      <button type="button" data-tab="soon">Coming Soon!</button>
+    </nav>
+
+    <main id="app" tabindex="-1">
+      <section class="loading-state" aria-live="polite">
+        <span></span>
+        <p>Loading the final NYFL board and grading model…</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>NYFL · 2026 FINAL DRAFT REVIEW</span>
+      <span id="dataStamp">Loading model snapshot…</span>
+    </footer>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

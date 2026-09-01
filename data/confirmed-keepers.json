@@ -1,0 +1,56 @@
+{
+  "season": 2026,
+  "asOf": "2026-08-30",
+  "locked": true,
+  "rule": "The 2026 NYFL keeper deadline has passed. This file contains the final 36 locked keepers: three per team, at their official 2026 round costs.",
+  "keepers": [
+    { "manager": "Matt Taffet", "team": "Matt's Monstrous Team", "player": "Omarion Hampton", "round": 2 },
+    { "manager": "Matt Taffet", "team": "Matt's Monstrous Team", "player": "Drake London", "round": 6 },
+    { "manager": "Matt Taffet", "team": "Matt's Monstrous Team", "player": "Luther Burden III", "round": 11 },
+
+    { "manager": "Josh Watts", "team": "U Dont Call Them Pollard People", "player": "Kenneth Walker III", "round": 2 },
+    { "manager": "Josh Watts", "team": "U Dont Call Them Pollard People", "player": "George Pickens", "round": 4 },
+    { "manager": "Josh Watts", "team": "U Dont Call Them Pollard People", "player": "Emeka Egbuka", "round": 5 },
+
+    { "manager": "Matthew Enslin", "team": "Burrowmancer", "player": "Derrick Henry", "round": 1 },
+    { "manager": "Matthew Enslin", "team": "Burrowmancer", "player": "Travis Etienne Jr.", "round": 8 },
+    { "manager": "Matthew Enslin", "team": "Burrowmancer", "player": "Rashee Rice", "round": 16 },
+
+    { "manager": "Randy Lai", "team": "2015-2016 Cleveland Cavs ⚔️", "player": "James Cook III", "round": 5 },
+    { "manager": "Randy Lai", "team": "2015-2016 Cleveland Cavs ⚔️", "player": "Colston Loveland", "round": 9 },
+    { "manager": "Randy Lai", "team": "2015-2016 Cleveland Cavs ⚔️", "player": "Christian Watson", "round": 16 },
+
+    { "manager": "Tomotaka Cho", "team": "The Twin Bowers", "player": "Jaxon Smith-Njigba", "round": 5 },
+    { "manager": "Tomotaka Cho", "team": "The Twin Bowers", "player": "Brock Bowers", "round": 8 },
+    { "manager": "Tomotaka Cho", "team": "The Twin Bowers", "player": "Woody Marks", "round": 16 },
+
+    { "manager": "Nathaniel Kazlow", "team": "Loser buys winner's Lemonade", "player": "Jaylen Waddle", "round": 4 },
+    { "manager": "Nathaniel Kazlow", "team": "Loser buys winner's Lemonade", "player": "Quinshon Judkins", "round": 7 },
+    { "manager": "Nathaniel Kazlow", "team": "Loser buys winner's Lemonade", "player": "De'Von Achane", "round": 16 },
+
+    { "manager": "Jeremy Sahler", "team": "Big Boutte Btches", "player": "Ja'Marr Chase", "round": 1 },
+    { "manager": "Jeremy Sahler", "team": "Big Boutte Btches", "player": "Breece Hall", "round": 4 },
+    { "manager": "Jeremy Sahler", "team": "Big Boutte Btches", "player": "Nico Collins", "round": 10 },
+
+    { "manager": "David Lustberg", "team": "Vecberg", "player": "Bijan Robinson", "round": 1 },
+    { "manager": "David Lustberg", "team": "Vecberg", "player": "Tyler Warren", "round": 7 },
+    { "manager": "David Lustberg", "team": "Vecberg", "player": "Puka Nacua", "round": 16 },
+
+    { "manager": "Matt Spring", "team": "Gay McPride", "player": "Jahmyr Gibbs", "round": 1 },
+    { "manager": "Matt Spring", "team": "Gay McPride", "player": "Zay Flowers", "round": 9 },
+    { "manager": "Matt Spring", "team": "Gay McPride", "player": "Trey McBride", "round": 15 },
+
+    { "manager": "Leo Danzig", "team": "Maye son or Conk daughter?", "player": "Ladd McConkey", "round": 7 },
+    { "manager": "Leo Danzig", "team": "Maye son or Conk daughter?", "player": "Caleb Williams", "round": 12 },
+    { "manager": "Leo Danzig", "team": "Maye son or Conk daughter?", "player": "Kyren Williams", "round": 16 },
+
+    { "manager": "Tashi Eng", "team": "'97-'98 Bulls", "player": "A.J. Brown", "round": 2 },
+    { "manager": "Tashi Eng", "team": "'97-'98 Bulls", "player": "DeVonta Smith", "round": 3 },
+    { "manager": "Tashi Eng", "team": "'97-'98 Bulls", "player": "Jonathan Taylor", "round": 6 },
+
+    { "manager": "Jack Harrist", "team": "Chase Brown is God", "player": "Jameson Williams", "round": 8 },
+    { "manager": "Jack Harrist", "team": "Chase Brown is God", "player": "Sam LaPorta", "round": 13 },
+    { "manager": "Jack Harrist", "team": "Chase Brown is God", "player": "Chase Brown", "round": 16 }
+  ],
+  "roundAdjustments": []
+}
