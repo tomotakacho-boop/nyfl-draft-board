@@ -83,6 +83,31 @@ main { min-height: calc(100vh - 240px); padding: 34px clamp(20px, 5vw, 80px) 70p
 .position-tag { display: inline-grid; place-items: center; min-width: 28px; height: 20px; padding: 0 6px; color: #17392e; font-size: 7px; font-weight: 950; letter-spacing: .05em; }
 .pos-qb { background: var(--qb); }.pos-rb { background: var(--rb); }.pos-wr { background: var(--wr); }.pos-te { background: var(--te); }.pos-k { background: var(--k); }.pos-dst { background: var(--dst); }
 
+.roster-view { border: 1px solid var(--line); background: #e9e5da; }
+.roster-view > header { display: flex; justify-content: space-between; gap: 24px; align-items: end; padding: 20px; color: white; background: var(--forest); }
+.roster-view > header p { margin: 0; color: var(--acid); font-size: 7px; font-weight: 950; letter-spacing: .14em; }
+.roster-view > header h3 { margin: 5px 0 0; font: 900 24px Georgia, serif; }
+.roster-view > header > span { max-width: 560px; color: #c8d7d0; font-size: 9px; line-height: 1.5; text-align: right; }
+.roster-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; padding: 14px; }
+.roster-card { min-width: 0; border: 1px solid var(--line); background: var(--surface); box-shadow: 0 7px 18px rgba(20,48,36,.07); }
+.roster-card > header { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; min-height: 76px; padding: 14px 16px; color: white; background: var(--navy); }
+.roster-card > header div > span { color: var(--gold); font-size: 7px; font-weight: 950; }
+.roster-card > header h3 { margin: 4px 0; font: 900 15px Georgia, serif; line-height: 1.15; }
+.roster-card > header div > small { display: block; color: #cbd4da; font-size: 7px; }
+.roster-card > header > b { font: 900 22px Georgia, serif; text-align: right; }
+.roster-card > header > b small { display: block; margin-top: 2px; color: var(--acid); font: 900 7px Arial, sans-serif; }
+.roster-card > section > p { margin: 0; padding: 10px 12px 7px; color: var(--forest-2); background: #eef0e9; font-size: 6px; font-weight: 950; letter-spacing: .13em; }
+.roster-player { display: grid; grid-template-columns: 32px 34px minmax(0, 1fr) auto; gap: 7px; align-items: center; min-height: 43px; padding: 7px 10px; border-top: 1px solid var(--line); }
+.roster-player > b { color: var(--forest); font-size: 7px; }
+.roster-player > div { min-width: 0; }
+.roster-player > div strong, .roster-player > div small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.roster-player > div strong { color: var(--ink); font-size: 8px; }
+.roster-player > div small { margin-top: 3px; color: var(--muted); font-size: 6px; }
+.roster-player > em { padding: 3px 5px; color: var(--forest); background: var(--acid); font-size: 5px; font-style: normal; font-weight: 950; }
+.roster-player.keeper-player { background: #f3f8d9; }
+.roster-bench .roster-player { min-height: 38px; background: #fbfaf6; }
+.roster-bench .roster-player.keeper-player { background: #f3f8d9; }
+
 .team-focus-panel, .leaderboard-panel, .team-grade-detail, .formula-panel, .caveat-panel { margin-top: 28px; border: 1px solid var(--line); background: var(--surface); box-shadow: 0 8px 26px rgba(20,48,36,.06); }
 .team-focus-panel > header, .leaderboard-panel > header, .team-grade-detail > header, .formula-panel > header { display: flex; justify-content: space-between; gap: 22px; align-items: center; padding: 18px 20px; border-bottom: 1px solid var(--line); }
 .team-focus-panel header p, .team-focus-panel header span { margin: 0; color: var(--muted); font-size: 8px; font-weight: 850; letter-spacing: .08em; }
@@ -184,6 +209,7 @@ main { min-height: calc(100vh - 240px); padding: 34px clamp(20px, 5vw, 80px) 70p
   .grade-audit-strip, .caveat-panel dl, .soon-grid { grid-template-columns: repeat(2, 1fr); }
   .method-grid { grid-template-columns: 1fr; }.method-hero { grid-template-columns: 1fr; }.method-hero article { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.22); }
   .bet-controls { grid-template-columns: repeat(2, 1fr); }.bet-grid { grid-template-columns: 1fr; }
+  .roster-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 620px) {
@@ -194,4 +220,5 @@ main { min-height: calc(100vh - 240px); padding: 34px clamp(20px, 5vw, 80px) 70p
   .team-grade-detail > header { grid-template-columns: 1fr; }.team-grade-total { padding: 12px 0; border: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .method-grid article { grid-template-columns: 54px 1fr; padding: 14px; }.method-grid article > div { width: 48px; height: 63px; }.formula-panel li { grid-template-columns: 1fr; padding-left: 64px; }
   .site-footer { flex-direction: column; }
+  .roster-view > header { align-items: flex-start; flex-direction: column; }.roster-view > header > span { text-align: left; }.roster-grid { grid-template-columns: 1fr; padding: 8px; }
 }

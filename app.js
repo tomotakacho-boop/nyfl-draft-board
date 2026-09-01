@@ -41,10 +41,7 @@ function keeperSet() {
 }
 
 function orderedTeams() {
-  const teams = draftData.teams.slice();
-  if (state.boardSort === "team") teams.sort((a, b) => a.team.localeCompare(b.team));
-  else teams.sort((a, b) => a.slot - b.slot);
-  return teams;
+  return draftData.teams.slice().sort((a, b) => a.slot - b.slot);
 }
 
 function sectionIntro(eyebrow, title, copy) {
@@ -90,8 +87,30 @@ function renderResults() {
     </tr>`;
   }).join("") : "";
 
+  const rosterRoleOrder = ["QB", "RB1", "RB2", "WR1", "WR2", "TE", "FLEX", "D/ST", "K"];
+  const visibleRosterTeams = focused ? teams.filter((team) => team.team === focused.team) : teams;
+  const rosterCards = visibleRosterTeams.map((team) => {
+    const teamReport = report.teams.find((entry) => entry.team === team.team);
+    const starters = teamReport.roster
+      .filter((entry) => entry.starter)
+      .slice()
+      .sort((a, b) => rosterRoleOrder.indexOf(a.role) - rosterRoleOrder.indexOf(b.role));
+    const bench = teamReport.roster.filter((entry) => !entry.starter).slice().sort((a, b) => a.round - b.round);
+    const rosterRow = (entry, slot) => `<div class="roster-player ${entry.keeper ? "keeper-player" : ""}">
+      <b>${escapeHtml(slot)}</b>
+      <span>${positionTag(entry.player.pos)}</span>
+      <div><strong>${escapeHtml(entry.player.boardName || entry.player.name)}</strong><small>${escapeHtml(entry.player.team || "FA")} · R${entry.round}${entry.player.projectedPPG == null ? "" : ` · ${oneDecimal(entry.player.projectedPPG)} PPG`}</small></div>
+      ${entry.keeper ? "<em>KEEPER</em>" : ""}
+    </div>`;
+    return `<article class="roster-card">
+      <header><div><span>#${team.slot}</span><h3>${escapeHtml(team.team)}</h3><small>${escapeHtml(team.manager)}</small></div><b>${oneDecimal(teamReport.grade)}<small>${teamReport.letter}</small></b></header>
+      <section><p>PROJECTED STARTING LINEUP</p>${starters.map((entry) => rosterRow(entry, entry.role)).join("")}</section>
+      <section class="roster-bench"><p>BENCH</p>${bench.map((entry, index) => rosterRow(entry, `BE${index + 1}`)).join("")}</section>
+    </article>`;
+  }).join("");
+
   app.innerHTML = `
-    ${sectionIntro("FINAL DRAFT BOARD", "Every 2026 NYFL selection, in its original round", "Reorder the team columns by official draft slot or team name. Use Team Focus for a clean one-roster audit.")}
+    ${sectionIntro("FINAL DRAFT BOARD", "Every 2026 NYFL selection, in its original round", "Switch between the physical draft board and lineup-based team rosters. Use Team Focus for a one-club audit.")}
     <section class="summary-strip">
       <article><span>TEAMS</span><b>${draftData.teams.length}</b></article>
       <article><span>ROUNDS</span><b>${draftData.rounds}</b></article>
@@ -99,16 +118,19 @@ function renderResults() {
       <article><span>LOCKED KEEPERS</span><b>${keeperData.keepers.length}</b></article>
     </section>
     <section class="board-controls" aria-label="Draft result controls">
-      <div><span>SORT TEAM COLUMNS</span><button type="button" data-board-sort="slot" class="${state.boardSort === "slot" ? "active" : ""}">Draft order</button><button type="button" data-board-sort="team" class="${state.boardSort === "team" ? "active" : ""}">Team A–Z</button></div>
+      <div><span>VIEW RESULTS AS</span><button type="button" data-board-sort="slot" class="${state.boardSort === "slot" ? "active" : ""}">Draft board</button><button type="button" data-board-sort="roster" class="${state.boardSort === "roster" ? "active" : ""}">Team rosters</button></div>
       <label><span>TEAM FOCUS</span><select id="teamFocus"><option value="ALL">All teams</option>${draftData.teams.slice().sort((a,b) => a.team.localeCompare(b.team)).map((team) => `<option value="${escapeHtml(team.team)}" ${state.focusedTeam === team.team ? "selected" : ""}>#${team.slot} ${escapeHtml(team.team)}</option>`).join("")}</select></label>
     </section>
-    <section class="draft-board-shell" aria-label="2026 NYFL final draft board">
+    ${state.boardSort === "roster" ? `<section class="roster-view" aria-label="NYFL team rosters">
+      <header><div><p>ROSTER VIEW</p><h3>${focused ? escapeHtml(focused.team) : "All 12 projected starting lineups"}</h3></div><span>Starters are selected by the grading model from each drafted roster. Bench players remain listed in original draft-round order.</span></header>
+      <div class="roster-grid">${rosterCards}</div>
+    </section>` : `<section class="draft-board-shell" aria-label="2026 NYFL final draft board">
       <table class="draft-board-table">
         <thead><tr><th>ROUND</th>${teams.map((team) => `<th><span>#${team.slot}</span><strong>${escapeHtml(team.team)}</strong><small>${escapeHtml(team.manager)}</small></th>`).join("")}</tr></thead>
         <tbody>${boardRows}</tbody>
       </table>
-    </section>
-    ${focused ? `<section class="team-focus-panel">
+    </section>`}
+    ${focused && state.boardSort === "slot" ? `<section class="team-focus-panel">
       <header><div><p>TEAM FOCUS · SLOT ${focused.slot}</p><h3>${escapeHtml(focused.team)}</h3><span>${escapeHtml(focused.manager)}</span></div><button type="button" id="clearTeamFocus">Show full-league focus</button></header>
       <div class="simple-table-wrap"><table class="focus-table"><thead><tr><th>Round</th><th>Overall</th><th>Player</th><th>Pos</th><th>Model rank</th><th>ADP</th><th>Proj. PPG</th></tr></thead><tbody>${focusedRows}</tbody></table></div>
     </section>` : ""}

@@ -4,7 +4,7 @@ A standalone, dependency-free results site for the 2026 New York Fantasy League 
 
 ## Tabs
 
-- **Draft Results** — the final 12-team, 16-round physical board; sort columns by draft order or team name and focus on one roster.
+- **Draft Results** — the final 12-team, 16-round physical board, plus a roster view showing every club's projected starters and bench.
 - **Draft Grade** — the complete 1–12 leaderboard plus a player-by-player scoring audit for every team.
 - **Side Bets** — the accepted season-long and weekly matchup ledger, with type, status, and participant filters.
 - **Methodology** — the grading weights, formulas, data inputs, and limitations.
