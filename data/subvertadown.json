@@ -1,22 +1,937 @@
 {
-  "status": "public_preview",
+  "status": "connected",
   "week": 2,
   "season": 2026,
-  "capturedAt": "2026-09-16T00:00:00Z",
-  "source": "https://subvertadown.com/",
+  "capturedAt": "2026-09-16T05:24:38Z",
+  "source": "Authorized Subvertadown Snapshot import",
   "positions": {
     "QB": [
-      {"player": "Josh Allen", "team": "BUF", "projection": 24.4, "opponent": "vs. DET", "week": 2},
-      {"player": "Lamar Jackson", "team": "BAL", "projection": 20.6, "opponent": "vs. NO", "week": 2}
+      {
+        "player": "Josh Allen",
+        "team": "BUF",
+        "projection": 24.4,
+        "opponent": "vs. DET",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Lamar Jackson",
+        "team": "BAL",
+        "projection": 20.6,
+        "opponent": "vs. NO",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Brock Purdy",
+        "team": "SF",
+        "projection": 20.0,
+        "opponent": "vs. MIA",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Caleb Williams",
+        "team": "CHI",
+        "projection": 19.8,
+        "opponent": "vs. MIN",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Jayden Daniels",
+        "team": "WAS",
+        "projection": 19.0,
+        "opponent": "@ DAL",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Patrick Mahomes",
+        "team": "KC",
+        "projection": 19.0,
+        "opponent": "vs. IND",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Dak Prescott",
+        "team": "DAL",
+        "projection": 19.0,
+        "opponent": "vs. WAS",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Matthew Stafford",
+        "team": "LAR",
+        "projection": 18.8,
+        "opponent": "vs. NYG",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Justin Herbert",
+        "team": "LAC",
+        "projection": 18.4,
+        "opponent": "vs. LV",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Jalen Hurts",
+        "team": "PHI",
+        "projection": 18.4,
+        "opponent": "@ TEN",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Drake Maye",
+        "team": "NE",
+        "projection": 18.2,
+        "opponent": "vs. PIT",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Jaxson Dart",
+        "team": "NYG",
+        "projection": 18.1,
+        "opponent": "@ LAR",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "C.J. Stroud",
+        "team": "HOU",
+        "projection": 17.9,
+        "opponent": "vs. CIN",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Baker Mayfield",
+        "team": "TB",
+        "projection": 17.8,
+        "opponent": "vs. CLE",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Bryce Young",
+        "team": "CAR",
+        "projection": 17.7,
+        "opponent": "@ ATL",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Jared Goff",
+        "team": "DET",
+        "projection": 17.1,
+        "opponent": "@ BUF",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Joe Burrow",
+        "team": "CIN",
+        "projection": 17.1,
+        "opponent": "@ HOU",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Bo Nix",
+        "team": "DEN",
+        "projection": 16.4,
+        "opponent": "vs. JAC",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Jordan Love",
+        "team": "GB",
+        "projection": 16.0,
+        "opponent": "@ NYJ",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Trevor Lawrence",
+        "team": "JAC",
+        "projection": 14.9,
+        "opponent": "@ DEN",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Drew Lock",
+        "team": "SEA",
+        "projection": 14.8,
+        "opponent": "@ ARI",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Daniel Jones",
+        "team": "IND",
+        "projection": 14.5,
+        "opponent": "@ KC",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Wentz / Murray",
+        "team": "MIN",
+        "projection": 14.4,
+        "opponent": "@ CHI",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Tyler Shough",
+        "team": "NO",
+        "projection": 14.3,
+        "opponent": "@ BAL",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Geno Smith",
+        "team": "NYJ",
+        "projection": 14.0,
+        "opponent": "vs. GB",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Cooper Rush",
+        "team": "ATL",
+        "projection": 14.0,
+        "opponent": "vs. CAR",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Jacoby Brissett",
+        "team": "ARI",
+        "projection": 14.0,
+        "opponent": "vs. SEA",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Malik Willis",
+        "team": "MIA",
+        "projection": 12.9,
+        "opponent": "@ SF",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Kirk Cousins",
+        "team": "LV",
+        "projection": 12.7,
+        "opponent": "@ LAC",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Deshaun Watson",
+        "team": "CLE",
+        "projection": 12.4,
+        "opponent": "@ TB",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Aaron Rodgers",
+        "team": "PIT",
+        "projection": 12.2,
+        "opponent": "@ NE",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Cam Ward",
+        "team": "TEN",
+        "projection": 12.1,
+        "opponent": "vs. PHI",
+        "error": null,
+        "hold": "",
+        "week": 2
+      }
     ],
     "K": [
-      {"player": "Evan McPherson", "team": "CIN", "projection": 9.7, "opponent": "@ HOU", "week": 2},
-      {"player": "Brandon Aubrey", "team": "DAL", "projection": 9.6, "opponent": "vs. WAS", "week": 2}
+      {
+        "player": "Evan McPherson",
+        "team": "CIN",
+        "projection": 9.7,
+        "opponent": "@ HOU",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Eddy Pineiro",
+        "team": "SF",
+        "projection": 9.7,
+        "opponent": "vs. MIA",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Brandon Aubrey",
+        "team": "DAL",
+        "projection": 9.6,
+        "opponent": "vs. WAS",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Andres Borregales",
+        "team": "NE",
+        "projection": 9.5,
+        "opponent": "vs. PIT",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Cameron Dicker",
+        "team": "LAC",
+        "projection": 9.4,
+        "opponent": "vs. LV",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Ka'imi Fairbairn",
+        "team": "HOU",
+        "projection": 9.4,
+        "opponent": "vs. CIN",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Ryan Fitzgerald",
+        "team": "CAR",
+        "projection": 9.3,
+        "opponent": "@ ATL",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Harrison Butker",
+        "team": "KC",
+        "projection": 9.3,
+        "opponent": "vs. IND",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Tyler Loop",
+        "team": "BAL",
+        "projection": 9.2,
+        "opponent": "vs. NO",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Jake Elliott",
+        "team": "PHI",
+        "projection": 9.2,
+        "opponent": "@ TEN",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Cam Little",
+        "team": "JAC",
+        "projection": 9.2,
+        "opponent": "@ DEN",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Cairo Santos",
+        "team": "CHI",
+        "projection": 9.2,
+        "opponent": "vs. MIN",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Chad Ryland",
+        "team": "ARI",
+        "projection": 9.0,
+        "opponent": "vs. SEA",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Trey Smack",
+        "team": "GB",
+        "projection": 9.0,
+        "opponent": "@ NYJ",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Nick Folk",
+        "team": "ATL",
+        "projection": 8.8,
+        "opponent": "vs. CAR",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Chase McLaughlin",
+        "team": "TB",
+        "projection": 8.8,
+        "opponent": "vs. CLE",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Matt Gay",
+        "team": "LV",
+        "projection": 8.7,
+        "opponent": "@ LAC",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Jake Bates",
+        "team": "DET",
+        "projection": 8.7,
+        "opponent": "@ BUF",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Tyler Bass",
+        "team": "BUF",
+        "projection": 8.6,
+        "opponent": "vs. DET",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Harrison Mevis",
+        "team": "LAR",
+        "projection": 8.5,
+        "opponent": "vs. NYG",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Dominic Zvada",
+        "team": "NYG",
+        "projection": 8.5,
+        "opponent": "@ LAR",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Jason Myers",
+        "team": "SEA",
+        "projection": 8.5,
+        "opponent": "@ ARI",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Wil Lutz",
+        "team": "DEN",
+        "projection": 8.5,
+        "opponent": "vs. JAC",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Jason Sanders",
+        "team": "NYJ",
+        "projection": 8.4,
+        "opponent": "vs. GB",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Joey Slye",
+        "team": "TEN",
+        "projection": 8.4,
+        "opponent": "vs. PHI",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Spencer Shrader",
+        "team": "IND",
+        "projection": 8.3,
+        "opponent": "@ KC",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Drew Stevens",
+        "team": "WAS",
+        "projection": 8.2,
+        "opponent": "@ DAL",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Andre Szmyt",
+        "team": "CLE",
+        "projection": 8.2,
+        "opponent": "@ TB",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Chris Boswell",
+        "team": "PIT",
+        "projection": 8.1,
+        "opponent": "@ NE",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Will Reichard",
+        "team": "MIN",
+        "projection": 8.0,
+        "opponent": "@ CHI",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Daniel Carlson",
+        "team": "NO",
+        "projection": 7.1,
+        "opponent": "@ BAL",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Riley Patterson",
+        "team": "MIA",
+        "projection": 6.7,
+        "opponent": "@ SF",
+        "error": null,
+        "hold": "",
+        "week": 2
+      }
     ],
     "DEF": [
-      {"player": "Buccaneers", "team": "TB", "projection": 9.6, "opponent": "vs. CLE", "week": 2},
-      {"player": "49ers", "team": "SF", "projection": 9.2, "opponent": "vs. MIA", "week": 2}
+      {
+        "player": "Buccaneers",
+        "team": "TB",
+        "projection": 9.6,
+        "opponent": "vs. Browns",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "49ers",
+        "team": "SF",
+        "projection": 9.1,
+        "opponent": "vs. Dolphins",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Eagles",
+        "team": "PHI",
+        "projection": 7.9,
+        "opponent": "@ Titans",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Packers",
+        "team": "GB",
+        "projection": 7.8,
+        "opponent": "@ Jets",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Seahawks",
+        "team": "SEA",
+        "projection": 7.5,
+        "opponent": "@ Cardinals",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Chiefs",
+        "team": "KC",
+        "projection": 7.1,
+        "opponent": "vs. Colts",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Patriots",
+        "team": "NE",
+        "projection": 7.0,
+        "opponent": "vs. Steelers",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Chargers",
+        "team": "LAC",
+        "projection": 7.0,
+        "opponent": "vs. Raiders",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Ravens",
+        "team": "BAL",
+        "projection": 6.9,
+        "opponent": "vs. Saints",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Bears",
+        "team": "CHI",
+        "projection": 6.6,
+        "opponent": "vs. Vikings",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Rams",
+        "team": "LAR",
+        "projection": 6.6,
+        "opponent": "vs. Giants",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Broncos",
+        "team": "DEN",
+        "projection": 6.1,
+        "opponent": "vs. Jaguars",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Panthers",
+        "team": "CAR",
+        "projection": 5.6,
+        "opponent": "@ Falcons",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Cardinals",
+        "team": "ARI",
+        "projection": 5.4,
+        "opponent": "vs. Seahawks",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Titans",
+        "team": "TEN",
+        "projection": 5.3,
+        "opponent": "vs. Eagles",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Jaguars",
+        "team": "JAC",
+        "projection": 5.2,
+        "opponent": "@ Broncos",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Steelers",
+        "team": "PIT",
+        "projection": 5.2,
+        "opponent": "@ Patriots",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Cowboys",
+        "team": "DAL",
+        "projection": 4.8,
+        "opponent": "vs. Commanders",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Texans",
+        "team": "HOU",
+        "projection": 4.8,
+        "opponent": "vs. Bengals",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Bills",
+        "team": "BUF",
+        "projection": 4.6,
+        "opponent": "vs. Lions",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Raiders",
+        "team": "LV",
+        "projection": 4.5,
+        "opponent": "@ Chargers",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Bengals",
+        "team": "CIN",
+        "projection": 4.2,
+        "opponent": "@ Texans",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Browns",
+        "team": "CLE",
+        "projection": 4.2,
+        "opponent": "@ Buccaneers",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Falcons",
+        "team": "ATL",
+        "projection": 3.9,
+        "opponent": "vs. Panthers",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Jets",
+        "team": "NYJ",
+        "projection": 3.9,
+        "opponent": "vs. Packers",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Vikings",
+        "team": "MIN",
+        "projection": 3.8,
+        "opponent": "@ Bears",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Saints",
+        "team": "NO",
+        "projection": 3.7,
+        "opponent": "@ Ravens",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Colts",
+        "team": "IND",
+        "projection": 3.2,
+        "opponent": "@ Chiefs",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Giants",
+        "team": "NYG",
+        "projection": 2.5,
+        "opponent": "@ Rams",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Dolphins",
+        "team": "MIA",
+        "projection": 2.2,
+        "opponent": "@ 49ers",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Commanders",
+        "team": "WAS",
+        "projection": 2.1,
+        "opponent": "@ Cowboys",
+        "error": null,
+        "hold": "",
+        "week": 2
+      },
+      {
+        "player": "Lions",
+        "team": "DET",
+        "projection": 2.0,
+        "opponent": "@ Bills",
+        "error": null,
+        "hold": "",
+        "week": 2
+      }
     ]
   },
-  "message": "Public preview loaded. Import your subscribed Snapshot table to archive the full QB, K, and D/ST rankings."
+  "archive": [
+    {
+      "week": 2,
+      "season": 2026,
+      "capturedAt": "2026-09-16T00:00:00Z",
+      "positions": {
+        "QB": [
+          {
+            "player": "Josh Allen",
+            "team": "BUF",
+            "projection": 24.4,
+            "opponent": "vs. DET",
+            "week": 2
+          },
+          {
+            "player": "Lamar Jackson",
+            "team": "BAL",
+            "projection": 20.6,
+            "opponent": "vs. NO",
+            "week": 2
+          }
+        ],
+        "K": [
+          {
+            "player": "Evan McPherson",
+            "team": "CIN",
+            "projection": 9.7,
+            "opponent": "@ HOU",
+            "week": 2
+          },
+          {
+            "player": "Brandon Aubrey",
+            "team": "DAL",
+            "projection": 9.6,
+            "opponent": "vs. WAS",
+            "week": 2
+          }
+        ],
+        "DEF": [
+          {
+            "player": "Buccaneers",
+            "team": "TB",
+            "projection": 9.6,
+            "opponent": "vs. CLE",
+            "week": 2
+          },
+          {
+            "player": "49ers",
+            "team": "SF",
+            "projection": 9.2,
+            "opponent": "vs. MIA",
+            "week": 2
+          }
+        ]
+      }
+    }
+  ],
+  "message": "Authorized Subvertadown Snapshot imported. Full QB, K, and D/ST rows are now archived for this week."
 }
