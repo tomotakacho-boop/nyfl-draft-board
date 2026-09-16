@@ -1,47 +1,60 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#123e31" />
-    <meta name="description" content="2026 New York Fantasy League final draft results, grades, and methodology." />
-    <title>NYFL 2026 Draft Results</title>
-    <link rel="stylesheet" href="./styles.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0a0d0b" />
+    <meta name="description" content="Five-league fantasy football command center for standings, lineups, matchups, trades, rankings, and FAAB." />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0d0b'/%3E%3Cpath d='M16 18h32v9H34v7h12v9H34v13H22V27h-6z' fill='%23dfff4f'/%3E%3C/svg%3E" />
+    <title>Fantasy Control Room</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="site-header">
-      <div class="brand-mark" aria-hidden="true">N</div>
-      <div class="brand-copy">
-        <p>NEW YORK FANTASY LEAGUE</p>
-        <h1>Draft Review <span>’26</span></h1>
-      </div>
-      <div class="header-status">
-        <i aria-hidden="true"></i>
-        <div><strong>Final board locked</strong><small>16 rounds · 12 teams</small></div>
-      </div>
-    </header>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <a class="brand" href="#command" aria-label="Fantasy Control Room home">
+          <span class="brand-mark">F</span>
+          <span><strong>Fantasy</strong><small>Control Room</small></span>
+        </a>
+        <nav id="primary-nav">
+          <button class="nav-item is-active" data-view="command"><span>01</span>Command center</button>
+          <button class="nav-item" data-view="teams"><span>02</span>My teams</button>
+          <button class="nav-item" data-view="matchups"><span>03</span>Matchups</button>
+          <button class="nav-item" data-view="players"><span>04</span>Player market</button>
+          <button class="nav-item" data-view="trades"><span>05</span>Trade lab</button>
+          <button class="nav-item" data-view="waivers"><span>06</span>Waivers + FAAB</button>
+          <button class="nav-item" data-view="standings"><span>07</span>League tables</button>
+          <button class="nav-item" data-view="snapshots"><span>08</span>Weekly snapshots</button>
+        </nav>
+        <div class="sidebar-foot">
+          <span class="live-dot"></span>
+          <div><strong id="sync-state">Loading data</strong><small id="sync-time">Checking sources…</small></div>
+        </div>
+      </aside>
 
-    <nav class="site-tabs" aria-label="NYFL results sections">
-      <button type="button" data-tab="results" class="active">Draft Results</button>
-      <button type="button" data-tab="grades">Draft Grade</button>
-      <button type="button" data-tab="side-bets">Side Bets</button>
-      <button type="button" data-tab="group-chat">Group Chat</button>
-      <button type="button" data-tab="methodology">Methodology</button>
-      <button type="button" data-tab="soon">Coming Soon!</button>
-    </nav>
+      <main>
+        <header class="topbar">
+          <button class="menu-button" id="menu-button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+          <div>
+            <p class="eyebrow" id="page-kicker">2026 season · week —</p>
+            <h1 id="page-title">Command center</h1>
+          </div>
+          <div class="topbar-actions">
+            <label class="league-switcher">
+              <span>League</span>
+              <select id="global-league" aria-label="Choose league"></select>
+            </label>
+            <button class="icon-button" id="refresh-button" type="button" title="Reload the latest generated snapshot">↻</button>
+          </div>
+        </header>
 
-    <main id="app" tabindex="-1">
-      <section class="loading-state" aria-live="polite">
-        <span></span>
-        <p>Loading the final NYFL board and grading model…</p>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <span>NYFL · 2026 FINAL DRAFT REVIEW</span>
-      <span id="dataStamp">Loading model snapshot…</span>
-    </footer>
-
-    <script type="module" src="./app.js"></script>
+        <section id="app" class="view" aria-live="polite">
+          <div class="loading-grid">
+            <div class="skeleton tall"></div><div class="skeleton"></div><div class="skeleton"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="app.js"></script>
   </body>
 </html>

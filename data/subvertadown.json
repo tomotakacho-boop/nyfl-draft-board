@@ -1,0 +1,9 @@
+{
+  "status": "connection_required",
+  "week": 2,
+  "season": 2026,
+  "capturedAt": null,
+  "positions": {"QB": [], "K": [], "DEF": []},
+  "message": "Connect an authenticated Subvertadown Snapshot session to archive weekly QB, K, and D/ST rankings."
+}
+

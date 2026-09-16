@@ -1,10 +1,11 @@
 {
-  "name": "nyfl-2026-draft-review",
+  "name": "fantasy-control-room",
   "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "python3 -m http.server 4173",
-    "check": "node --check app.js && node --check model.js"
+    "sync": "./scripts/sync_leagues.py",
+    "check": "node --check app.js && python3 -m py_compile scripts/sync_leagues.py"
   }
 }

@@ -1,39 +1,51 @@
-# NYFL 2026 Draft Review
+# Fantasy Control Room
 
-A standalone, dependency-free results site for the 2026 New York Fantasy League draft.
+A public, read-only 2026 fantasy football season hub for five ESPN and Sleeper leagues. It combines standings, rosters, matchups, weekly rankings, trade comparison, player availability, and FAAB planning in one responsive website.
 
-## Tabs
+## Connected leagues
 
-- **Draft Results** — the final 12-team, 16-round physical board, plus a roster view showing every club's projected starters and bench.
-- **Draft Grade** — the complete 1–12 leaderboard plus a player-by-player scoring audit for every team.
-- **Side Bets** — the accepted season-long and weekly matchup ledger, with type, status, and participant filters.
-- **Group Chat** — a weekly, privacy-reviewed archive of memes, other images, X links, and messages with six or more active Haha Tapbacks.
-- **Methodology** — the grading weights, formulas, data inputs, and limitations.
-- **Coming Soon!** — reserved for in-season actual-versus-projected tracking.
+- ESPN `64665002` — public
+- ESPN `416026` — private; requires repository secrets
+- ESPN `1340339511` — private; requires repository secrets
+- Sleeper `1396403028730339328`
+- Sleeper `1387115477460865024`
 
-## Deploy to Netlify
+Sleeper data uses its documented public read-only API. ESPN data is fetched from ESPN's internal fantasy endpoint. Only normalized league information is written to `data/hub.json`; authentication values are never written to disk or included in the website.
 
-Upload this entire folder to a GitHub repository and connect the repository to Netlify. The included `netlify.toml` publishes the repository root directly; there is no build command and no framework plugin required.
+## Weekly refresh
 
-## Run locally
+There is no scheduled sync. After each weekend, ask Codex to refresh the ESPN, Sleeper, rankings, and snapshot data, or run the manual **Sync season data** workflow from the GitHub Actions tab. The workflow regenerates `data/hub.json`, commits the update, and pushes it to `main`.
 
-Opening `index.html` directly will block the JSON files in most browsers. Serve the folder over HTTP:
+For the two private ESPN leagues, keep these as GitHub Actions repository secrets so they are available when the weekly update is run:
+
+- `ESPN_SWID`
+- `ESPN_S2`
+
+Never place either value in a source file, issue, commit, or public message.
+
+## Subvertadown
+
+`data/subvertadown.json` is the safe public snapshot contract for authenticated QB, K, and D/ST weekly snapshots. The site currently displays the weekly consensus fallback until an authorized Subvertadown session is connected. Subscription credentials must not be committed.
+
+## Local development
 
 ```bash
 python3 -m http.server 4173
 ```
 
-Then open `http://localhost:4173`.
+Open `http://localhost:4173`. Refresh league data with:
 
-## Canonical data
+```bash
+./scripts/sync_leagues.py
+```
 
-- `data/draft-results.json` — final 192 picks in round-by-team form.
-- `data/confirmed-keepers.json` — final 36 locked keepers and their round costs.
-- `data/player-metrics.json` — compact 192-player NYFL model snapshot used by the grade engine.
-- `data/side-bets.json` — repository-backed season and matchup side-bet ledger.
-- `data/group-chat.json` — generated, publishable group-chat index; it never contains the Messages database.
-- `model.js` — the auditable grading calculations.
+Optional ESPN credentials may be supplied as environment variables for a local run.
 
-## Weekly group-chat archive
+## Data sources
 
-See [`scripts/GROUP_CHAT_SETUP.md`](scripts/GROUP_CHAT_SETUP.md). The extractor reads the local Messages database without modifying it, keeps full-resolution originals outside this repository, and writes only compressed web copies plus `data/group-chat.json` into the site.
+- ESPN fantasy league data
+- Sleeper public API
+- Weekly FantasyPros consensus rankings published through the nflverse/DynastyProcess data pipeline
+- Subvertadown authenticated Snapshot data after connection
+
+The trade comparison and FAAB calculator are decision aids, not guarantees. Their outputs should be reviewed with current injury news and league context.
