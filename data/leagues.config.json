@@ -7,10 +7,9 @@
   },
   "leagues": [
     {"id": "64665002", "platform": "espn", "url": "https://fantasy.espn.com/football/league?leagueId=64665002"},
-    {"id": "416026", "platform": "espn", "url": "https://fantasy.espn.com/football/league?leagueId=416026"},
-    {"id": "1340339511", "platform": "espn", "url": "https://fantasy.espn.com/football/league?leagueId=1340339511"},
+    {"id": "416026", "platform": "espn", "secretPrefix": "ESPN_2", "url": "https://fantasy.espn.com/football/league?leagueId=416026"},
+    {"id": "1340339511", "platform": "espn", "secretPrefix": "ESPN_1", "url": "https://fantasy.espn.com/football/league?leagueId=1340339511"},
     {"id": "1396403028730339328", "platform": "sleeper", "url": "https://sleeper.com/leagues/1396403028730339328/league"},
     {"id": "1387115477460865024", "platform": "sleeper", "url": "https://sleeper.com/leagues/1387115477460865024/league"}
   ]
 }
-

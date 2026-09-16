@@ -111,7 +111,9 @@ def sync_espn(spec: dict, config: dict) -> dict:
         ("view", "mMatchup"), ("view", "mMatchupScore"), ("view", "mNav")
     ])
     url = f"https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/{config['season']}/segments/0/leagues/{spec['id']}?{params}"
-    swid, espn_s2 = os.environ.get("ESPN_SWID", "").strip(), os.environ.get("ESPN_S2", "").strip()
+    prefix = spec.get("secretPrefix", "ESPN")
+    swid = os.environ.get(f"{prefix}_SWID", os.environ.get("ESPN_SWID", "")).strip()
+    espn_s2 = os.environ.get(f"{prefix}_S2", os.environ.get("ESPN_S2", "")).strip()
     headers = {"Cookie": f"SWID={swid}; espn_s2={espn_s2}"} if swid and espn_s2 else {}
     try:
         return normalize_espn(request_json(url, headers), spec, config)

@@ -18,8 +18,8 @@ There is no scheduled sync. After each weekend, ask Codex to refresh the ESPN, S
 
 For the two private ESPN leagues, keep these as GitHub Actions repository secrets so they are available when the weekly update is run:
 
-- `ESPN_SWID`
-- `ESPN_S2`
+- `ESPN_1_SWID` and `ESPN_1_S2` → ESPN league `1340339511`
+- `ESPN_2_SWID` and `ESPN_2_S2` → ESPN league `416026`
 
 Never place either value in a source file, issue, commit, or public message.
 

@@ -16,8 +16,10 @@ jobs:
           python-version: "3.12"
       - name: Pull ESPN and Sleeper data
         env:
-          ESPN_SWID: ${{ secrets.ESPN_SWID }}
-          ESPN_S2: ${{ secrets.ESPN_S2 }}
+          ESPN_1_SWID: ${{ secrets.ESPN_1_SWID }}
+          ESPN_1_S2: ${{ secrets.ESPN_1_S2 }}
+          ESPN_2_SWID: ${{ secrets.ESPN_2_SWID }}
+          ESPN_2_S2: ${{ secrets.ESPN_2_S2 }}
         run: python scripts/sync_leagues.py
       - name: Commit changed snapshot
         run: |
