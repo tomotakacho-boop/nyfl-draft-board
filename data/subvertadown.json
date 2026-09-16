@@ -1,9 +1,22 @@
 {
-  "status": "connection_required",
+  "status": "public_preview",
   "week": 2,
   "season": 2026,
-  "capturedAt": null,
-  "positions": {"QB": [], "K": [], "DEF": []},
-  "message": "Connect an authenticated Subvertadown Snapshot session to archive weekly QB, K, and D/ST rankings."
+  "capturedAt": "2026-09-16T00:00:00Z",
+  "source": "https://subvertadown.com/",
+  "positions": {
+    "QB": [
+      {"player": "Josh Allen", "team": "BUF", "projection": 24.4, "opponent": "vs. DET", "week": 2},
+      {"player": "Lamar Jackson", "team": "BAL", "projection": 20.6, "opponent": "vs. NO", "week": 2}
+    ],
+    "K": [
+      {"player": "Evan McPherson", "team": "CIN", "projection": 9.7, "opponent": "@ HOU", "week": 2},
+      {"player": "Brandon Aubrey", "team": "DAL", "projection": 9.6, "opponent": "vs. WAS", "week": 2}
+    ],
+    "DEF": [
+      {"player": "Buccaneers", "team": "TB", "projection": 9.6, "opponent": "vs. CLE", "week": 2},
+      {"player": "49ers", "team": "SF", "projection": 9.2, "opponent": "vs. MIA", "week": 2}
+    ]
+  },
+  "message": "Public preview loaded. Import your subscribed Snapshot table to archive the full QB, K, and D/ST rankings."
 }
-

@@ -25,7 +25,15 @@ Never place either value in a source file, issue, commit, or public message.
 
 ## Subvertadown
 
-`data/subvertadown.json` is the safe public snapshot contract for authenticated QB, K, and D/ST weekly snapshots. The site currently displays the weekly consensus fallback until an authorized Subvertadown session is connected. Subscription credentials must not be committed.
+`data/subvertadown.json` is the safe public snapshot contract for authenticated QB, K, and D/ST weekly snapshots. The site shows a small public preview immediately; full subscribed rows are imported with `scripts/import_subvertadown.py`. Subvertadown credentials must not be committed.
+
+To import a weekly authorized snapshot, save the copied/exported table as CSV or TSV and run:
+
+```bash
+./scripts/import_subvertadown.py subvertadown-week2.csv --week 2 --season 2026
+```
+
+The importer archives up to 17 weeks and stores only rankings, projections, matchups, error estimates, and hold flags—not account credentials or browser cookies.
 
 ## Local development
 
